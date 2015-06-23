@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="301112491">
+    <data-source source="LOCAL" name="Rails Ruby-On-Rails-Cloud-Compiler: development" uuid="bdb8eec2-32f7-4bf9-835e-45151387f612">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\Can\Documents\GitHub\Ruby-On-Rails-Cloud-Compiler\db\development.sqlite3</jdbc-url>
+      <libraries />
+    </data-source>
+  </component>
+</project>
