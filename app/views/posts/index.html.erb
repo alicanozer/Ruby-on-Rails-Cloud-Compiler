@@ -1,0 +1,52 @@
+<h1>Welcome to PERSON SAYFA</h1>
+<% user=User.find(session[:user_id]) %>
+<% @posts.each do |post| %>
+
+    <% if post.us_id == user.id %>
+        <p><%= post.title  %></p>
+        <p><% words = post.content.split("\n") %></p>
+        <% i=0 %>
+        <% words.each do |v| %>
+            <p><%= i.to_s + "." + v %></p>
+            <% i= i+1 %>
+        <% end %>
+        <% if(post.title.last=='h') %>
+            <% if FileTest.exists?(post.us_id.to_s+'.h') %>
+                <% FileUtils.rm(post.us_id.to_s+'.h') %>
+            <% end %>
+            <p><% File.open(post.us_id.to_s+'.h', "w+") do |f| %><p>
+                <p><%  f.write(post.content) %><p>
+            <p><% end %></p>
+        <% else %>
+            <% if FileTest.exists?(post.us_id.to_s+'.c') %>
+                <% FileUtils.rm(post.us_id.to_s+'.c') %>
+            <% end %>
+            <p><% File.open(post.us_id.to_s+'.c', "w+") do |f| %><p>
+
+#burda hata inlude 1.h diyo ya sen dosya ismini degstryosun bunuda degstr
+
+                <p><%  f.write(post.content) %><p>
+
+                <p><% end %></p>
+        <% end %>
+
+          <%= link_to "Edit", edit_post_path(post) %> |
+          <%= link_to "Delete", post, :confirm => "Are you sure?", :method => :delete%>
+            <%if (post.title.last=='c') %>
+                <p><%= link_to "Run", post_path(post) %></p>
+            <% end %>
+
+
+        </p>
+
+        <hr />
+
+    <% end %>
+
+<% end %>
+
+<p><%= link_to "Add a New Content", new_post_path %></p>
+
+
+
+<p><%= link_to "Logout", logout_path %></p>
